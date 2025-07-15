@@ -15,8 +15,14 @@ spec:
         app: my-app
     spec:
       containers:
-      - name: nginx
-        image: my-app:latest
-        ports:
-        - containerPort: 80
+        - name: nginx
+          image: my-app:latest
+          ports:
+            - containerPort: 80
+          env:
+            - name: MY_KEY
+              valueFrom:
+                secretKeyRef:
+                  name: my-secret
+                  key: MY_KEY
 
